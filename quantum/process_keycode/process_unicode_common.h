@@ -46,7 +46,7 @@
 
 // Delay between starting Unicode input and sending a sequence, in ms
 #ifndef UNICODE_TYPE_DELAY
-#    define UNICODE_TYPE_DELAY 10
+#    define UNICODE_TYPE_DELAY 1
 #endif
 
 // Deprecated aliases
