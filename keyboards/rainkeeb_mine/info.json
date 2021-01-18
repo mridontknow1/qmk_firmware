@@ -1,0 +1,15 @@
+{
+  "keyboard_name": "rainkeeb",
+  "url": "",
+  "maintainer": "qmk",
+  "width": 3,
+  "height": 5,
+  "layouts": {
+    "rainkeeb_layout": {
+      "layout": [{a:7},"q","w","e","r","t",{x:2},"y","u","i","o","p"],
+				["a","s","d","f","g",{x:0.5,f:2},"encoder",{x:0.5,f:3},"h","j","k","l","up"],
+				["z","x","c","v","b",{x:0.5,f:2},"macro",{x:0.5,f:3},"n","m","left","right","down"],
+				["LShift","LCtrl","LAlt",{w2:2},"Space",{x:1,w2:2},"Layer",{x:1,w2:2},"Space",{x:1},"RGui","RAlt","RCtrl"]
+	}
+  }
+}

@@ -16,6 +16,7 @@
 #pragma once
 
 #include "quantum.h"
+#include "via.h"
 
 #define LAYOUT( \
     K00, K10, K01, K11, K02,      K13, K03, K14, K04, K15, \
@@ -32,3 +33,7 @@
     { K60,   K61,   K62,   KC_NO, K64,   K65 }, \
     { K70,   KC_NO, K72,   K73,   K74,   KC_NO }  \
 }
+
+enum via_enums {
+    OLED_TOG = USER00,
+};
