@@ -11,10 +11,27 @@
 #define BIGSWITCHPAD_H
 
 #include "quantum.h"
+#include "via.h"
+
+/* enums in via for Macros*/
+enum via_enums {
+	UD_F = USER00,		// 	Big Script F
+	CLOUD,  			//	(っ◕‿◕)っ
+	FU,					//	t(-_-t)
+	HAPPYFACE,			//	ʘ‿ʘ
+	SHRUG,				//	¯\_(ツ)_/¯
+	HEARTFACE,			//	♥‿♥
+	DISFACE,			//	ಠ_ಠ
+	TFLIP,				// 	(╯°□°)╯ ︵ ┻━┻
+	TFLIP2,				//	┻━┻︵ \(°□°)/ ︵ ┻━┻
+	SGLASS,				//	(⌐■_■)
+	BEAR,				//	ʕ•ᴥ•ʔ
+	HIIII,				//	⊂(◉‿◉)つ
+};
 
 // Define it so row0,column0 is bottom left and row5,column 3 is top right
 #define LAYOUT_ortho_3x5( \
-	K40, K41, K42, \
+	K40, K41,  \
 	K30, K31, K32, \
 	K20, K21, K22, \
 	K10, K11, K12, \
@@ -24,7 +41,7 @@
 	{ K10,   K11,   K12 }, \
 	{ K20,   K21,   K22 }, \
 	{ K30,   K31,   K32 }, \
-	{ K40,   K41,   K42 }  \
+	{ K40,   K41 }  \
 }
 
 #endif

@@ -21,28 +21,6 @@
 #define _MAC_L		2	// Macro Definition Layer
 #define _QMK_L		3	// QMK Functions Layer
 
-/* Create Macro Enum */
-enum custom_keycodes {
-    UD_1 = SAFE_RANGE,	//	<3 (User Defined 1)
-	UD_2,				//	Merry Christmas!
-	UD_3,				//	Tell Han and Chewie that Dick loves them
-	UD_F,				// 	F
-	RGB_CONF,			//	Current RGB values, speed, and mode
-	NOT_POS,			// 	WTF You can't hit this key!?!?!
-	CMDCLEAR,			//	ctrl+'a', del
-	CLOUD,  			//	(っ◕‿◕)っ
-	FU,					//	t(-_-t)
-	HAPPYFACE,			//	ʘ‿ʘ
-	SHRUG,				//	¯\_(ツ)_/¯
-	HEARTFACE,			//	♥‿♥
-	DISFACE,			//	ಠ_ಠ
-	TFLIP,				// 	(╯°□°)╯ ︵ ┻━┻
-	TFLIP2,				//	┻━┻︵ \(°□°)/ ︵ ┻━┻
-	SGLASS,				//	(⌐■_■)
-	BEAR,				//	ʕ•ᴥ•ʔ
-	HIIII,				//	⊂(◉‿◉)つ
-};
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Base Layer
    * ,-----------------------.
@@ -60,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * `-----------------------'
     */
   [_BASE_L] = LAYOUT_ortho_3x5( /* Base */
-	UD_F, 			TO(_RGB_L),		NOT_POS,
+	UD_F, 			TO(_RGB_L),
 	BEAR, 			HIIII, 			KC_MPLY,
 	TFLIP, 			TFLIP2, 		SGLASS,
 	SHRUG, 			HEARTFACE, 		DISFACE,
@@ -83,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * `-----------------------'
     */
   [_RGB_L] = LAYOUT_ortho_3x5( /* RGB Control */
-	RGB_CONF,		TO(_BASE_L),	_______,
+	_______,		TO(_BASE_L),
 	RGB_RMOD, 		RGB_MOD, 		RGB_TOG,
 	RGB_SPD,		RGB_TOG, 		RGB_SPI,
 	RGB_SAD,		RGB_TOG, 		RGB_SAI,
@@ -106,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * `-----------------------'
     */
   [_QMK_L] = LAYOUT_ortho_3x5( /* QMK Controls */
-	_______,		_______,		_______,
+	_______,		_______,
 	_______, 		_______, 		_______,
 	_______,		RESET,  		_______,
 	_______,		_______, 		_______,
@@ -139,67 +117,32 @@ void encoder_update_user(uint8_t index, bool clockwise) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-		case UD_1:			//	<3
+		case UD_F:			// Big Script F
 			if (record->event.pressed) { // when keycode is pressed
-				SEND_STRING("<3");
-			}
-			return false;
-			break;
-		case UD_2:			//	Merry Christmas!
-			if (record->event.pressed) { // when keycode is pressed
-				SEND_STRING("Merry Christmas!");
-			}
-			return false;
-			break;
-		case UD_3:			//	Tell Han and Chewie that Dick loves them
-			if (record->event.pressed) { // when keycode is pressed
-				SEND_STRING("Tell Han and Chewie that Dick loves them");
-			}
-			return false;
-			break;
-		case UD_F:			// F
-			if (record->event.pressed) { // when keycode is pressed
-				SEND_STRING("F");
-			}
-			return false;
-			break;
-		case RGB_CONF:		//	Current RGB values, speed, and mode
-			if (record->event.pressed) { // when keycode is pressed
-				if (rgblight_is_enabled()) {
-					char str[4];
-					SEND_STRING("RGB: HSV(");
-					sprintf(str, "%d", rgblight_get_hue());
-					send_string(str);
-					SEND_STRING(", ");
-					sprintf(str, "%d", rgblight_get_sat());
-					send_string(str);
-					SEND_STRING(", ");
-					sprintf(str, "%d", rgblight_get_val());
-					send_string(str);
-					SEND_STRING(") Mode(");
-					sprintf(str, "%d", rgblight_get_mode());
-					send_string(str);
-					SEND_STRING(") Speed(");
-					sprintf(str, "%d", rgblight_get_speed());
-					send_string(str);
-					SEND_STRING(")");
-				}
-				else {
-					SEND_STRING("RGB Toggled OFF");
-				}
-			}
-			return false;
-			break;
-		case NOT_POS:		//	WTF You can't hit this key!?!?!
-			if (record->event.pressed) { // when keycode is pressed
-				SEND_STRING("WTF You can't hit this key!?!?!");
-			}
-			return false;
-			break;
-		case CMDCLEAR:		//	ctrl+'a', del
-			if (record->event.pressed) {
-				SEND_STRING(SS_LCTL("a") SS_TAP(X_DEL));
-			}
+			send_unicode_string("⠀⠀⠀⢀⡤⢶⣶⣶⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ");
+			SEND_STRING(SS_LSFT("\n"));
+			send_unicode_string("⠀⠀⢀⣠⣤⣤⣤⣿⣧⣀⣀⣀⣀⣀⣀⣀⣀⣤⡄⠀ ");
+			SEND_STRING(SS_LSFT("\n"));
+			send_unicode_string("⢠⣾⡟⠋⠁⠀⠀⣸⠇⠈⣿⣿⡟⠉⠉⠉⠙⠻⣿⡀ ");
+			SEND_STRING(SS_LSFT("\n"));
+			send_unicode_string("⢺⣿⡀⠀⠀⢀⡴⠋⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠙⠇ ");
+			SEND_STRING(SS_LSFT("\n"));
+			send_unicode_string("⠈⠛⠿⠶⠚⠋⣀⣤⣤⣤⣿⣿⣇⣀⣀⣴⡆⠀⠀⠀ ");
+			SEND_STRING(SS_LSFT("\n"));
+			send_unicode_string("⠀⠀⠀⠀⠠⡞⠋⠀⠀⠀⣿⣿⡏⠉⠛⠻⣿⡀⠀⠀ ");
+			SEND_STRING(SS_LSFT("\n"));
+			send_unicode_string("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⡇⠀⠀⠀⠈⠁⠀⠀ ");
+			SEND_STRING(SS_LSFT("\n"));
+			send_unicode_string("⠀⠀⣠⣶⣶⣶⣶⡄⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀ ");
+			SEND_STRING(SS_LSFT("\n"));
+			send_unicode_string("⠀⢰⣿⠟⠉⠙⢿⡟⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀ ");
+			SEND_STRING(SS_LSFT("\n"));
+			send_unicode_string("⠀⢸⡟⠀⠀⠀⠘⠀⠀⠀⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀ ");
+			SEND_STRING(SS_LSFT("\n"));
+			send_unicode_string("⠀⠈⢿⡄⠀⠀⠀⠀⠀⣼⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀ ");
+			SEND_STRING(SS_LSFT("\n"));
+			send_unicode_string("⠀⠀⠀⠙⠷⠶⠶⠶⠿⠟⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀.");
+            }
 			return false;
 			break;
 		case CLOUD:			//	(っ◕‿◕)っ
@@ -290,19 +233,20 @@ const rgblight_segment_t PROGMEM qmk_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 
 // Define the array of layers. Later layers take precedence
 const rgblight_segment_t* const PROGMEM rgb_layers[] = RGBLIGHT_LAYERS_LIST(
-    qmk_layer,	// 0
+	qmk_layer	// 0
 );
 
 // Layers will light up if layers are active
 layer_state_t layer_state_set_user(layer_state_t state) {
-    rgblight_set_layer_state(0, layer_state_cmp(state, _QMK_L));
+	rgblight_set_layer_state(0, layer_state_cmp(state, _QMK_L));
     return state;
 }
 
 void keyboard_post_init_user(void) {
 	rgblight_enable_noeeprom();
-	rgblight_sethsv_noeeprom(132, 255, 70);
-	rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_MOOD);
+	rgblight_sethsv_noeeprom(HSV_AZURE); // HSV_AZURE = (128, 102, 255)
+	rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING);
+	rgblight_step_noeeprom();
 
 	// Enable the LED layers
     rgblight_layers = rgb_layers;

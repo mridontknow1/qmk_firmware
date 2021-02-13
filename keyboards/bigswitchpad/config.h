@@ -4,10 +4,10 @@
 #include "config_common.h"
 
 /* USB Device descriptor parameter */
-#define VENDOR_ID       0xFEED
-#define PRODUCT_ID      0x6060
+#define VENDOR_ID       0x5246
+#define PRODUCT_ID      0x4253
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    qmkbuilder
+#define MANUFACTURER    Dick
 #define PRODUCT         BigSwitchPad
 #define DESCRIPTION     Keyboard
 
@@ -55,7 +55,7 @@ https://r12a.github.io/app-conversion/ */
 reg add "HKCU\Control Panel\Input Method" -v EnableHexNumpad -t REG_SZ -d 1
 */
 #define UNICODE_SELECTED_MODES UC_WIN
-/* Modified UNICODE_TYPE_DELAY in 
+/* Modified UNICODE_TYPE_DELAY in
 \qmk_firmware\quantum\process_keycode\process_unicode_common.h
 from 10ms to 1ms */
 
